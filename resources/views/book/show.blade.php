@@ -1,0 +1,48 @@
+@extends('layouts.main')
+
+@section('content')
+    <a href="{{ route('buku.index') }}" class="btn btn-secondary mb4">Kembali</a>
+
+    <h2 class="mb-3">Detail Buku</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ asset('storage/' . $buku->cover) }}" alt="{{ $buku->judul }}" class="img-fluid">
+        </div>
+
+        <div class="col-md-8">
+            <div class="mb-3">
+                <span>Kode Buku</span>
+                <h3>{{ $buku->kode}}</h3>
+            </div>
+            <div class="mb-3">
+                <span>Judul Buku</span>
+                <h3>{{ $buku->judul}}</h3>
+            </div>
+            <div class="mb-3">
+                <span>Penulis</span>
+                <h3>{{ $buku->pengarang}}</h3>
+            </div>
+            <div class="mb-3">
+                <span>Kode Buku</span>
+                <h3>{{ $buku->kode}}</h3>
+            </div>
+            <div class="mb-3">
+                <span>Penerbit</span>
+                <h3>{{ $buku->penerbit}}</h3>
+            </div>
+            <div class="mb-3">
+                <span>Tanggal Terbit</span>
+                <h3>{{ $buku->tanggal_terbit}}</h3>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ route('buku.edit', $buku->id) }}" class="btn btn-primary mt-4">Edit Buku</a>
+
+    <form action="{{ route('buku.destroy', $buku->id) }}" method="POST" class="d-inline">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger mt-4">Hapus Buku</button>
+    </form>
+@endsection
